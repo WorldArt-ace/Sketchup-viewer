@@ -2,36 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Model from Google Drive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My SketchUp Model</title>
 
-    <!-- Google model-viewer -->
+    <!-- Load Google's <model-viewer> web component -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
     <style>
       body {
         margin: 0;
-        background: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: linear-gradient(180deg, #dfe6e9, #b2bec3);
         height: 100vh;
+        overflow: hidden;
       }
       model-viewer {
-        width: 90vw;
-        height: 90vh;
+        width: 100vw;
+        height: 100vh;
+      }
+      .info {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        background: rgba(0,0,0,0.6);
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 8px;
       }
     </style>
   </head>
   <body>
-    <model-viewer
-      src="https://drive.google.com/uc?export=download&id=1yyiAsmt4S10-VTxrxh6dGfGtt9_EiV8Y"
-      alt="3D model"
+    <!-- Your 3D Model -->
+    <model-viewer 
+      src="model.glb"
+      alt="SketchUp model"
       camera-controls
       auto-rotate
       shadow-intensity="1"
-      exposure="1"
-      ar>
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      touch-action="pan-y">
     </model-viewer>
+
+    <div class="info">Tap & drag to rotate • Pinch to zoom • Double-tap to reset</div>
   </body>
 </html>
