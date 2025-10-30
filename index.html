@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Showcase of innovative architectural projects by leading design firm">
-    <meta name="keywords" content="architecture, design, projects, modern, buildings, construction">
+    <meta name="description" content="Showcase of innovative architectural projects by leading design firm Architectural Vision">
+    <meta name="keywords" content="architecture, design, projects, modern, buildings, construction, architectural vision, portfolio">
     <title>Architectural Vision | Project Portfolio</title>
     <style>
         :root {
@@ -200,10 +200,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .view-project:hover {
             background: #ff2e4f;
+            transform: scale(1.05);
         }
         
         .project-info {
@@ -295,6 +298,113 @@
             margin-top: 2rem;
         }
         
+        /* Modal for project details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: var(--secondary-color);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--highlight-color);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-location {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .modal-description {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .detail-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .detail-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .modal-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .modal-link {
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .modal-link:hover {
+            background: var(--highlight-color);
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .projects-grid {
@@ -311,6 +421,15 @@
             
             .section-title {
                 font-size: 1.7rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+                margin: 10% auto;
+            }
+            
+            .modal-image {
+                height: 250px;
             }
         }
     </style>
@@ -337,17 +456,8 @@
             <!-- Project 1 -->
             <div class="project-card">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
-                    <div class="project-card">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                     <div class="project-overlay">
-                        <button class="view-project">View Project</button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Horizon Tower</h3>
-                    <p class="project-location">New York, USA</p>
-                    <p class="project-description">A 50-story residential skyscraper featuring sustainable design elements and panoramic city views. The building incorporates green roofs and energy-efficient systems.</p>
-                </div>
+                        <a href="#horizon-tower" class="view-project">View Project</a>
                     </div>
                 </div>
                 <div class="project-info">
@@ -361,7 +471,7 @@
             <div class="project-card">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                     <div class="project-overlay">
-                        <button class="view-project">View Project</button>
+                        <a href="#azure-residence" class="view-project">View Project</a>
                     </div>
                 </div>
                 <div class="project-info">
@@ -375,7 +485,7 @@
             <div class="project-card">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                     <div class="project-overlay">
-                        <button class="view-project">View Project</button>
+                        <a href="#tech-campus" class="view-project">View Project</a>
                     </div>
                 </div>
                 <div class="project-info">
@@ -389,7 +499,7 @@
             <div class="project-card">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                     <div class="project-overlay">
-                        <button class="view-project">View Project</button>
+                        <a href="#museum-arts" class="view-project">View Project</a>
                     </div>
                 </div>
                 <div class="project-info">
@@ -403,7 +513,7 @@
             <div class="project-card">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                     <div class="project-overlay">
-                        <button class="view-project">View Project</button>
+                        <a href="#sky-bridge" class="view-project">View Project</a>
                     </div>
                 </div>
                 <div class="project-info">
@@ -417,7 +527,7 @@
             <div class="project-card">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1549517045-bc93de075e53?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');">
                     <div class="project-overlay">
-                        <button class="view-project">View Project</button>
+                        <a href="#lakeside-retreat" class="view-project">View Project</a>
                     </div>
                 </div>
                 <div class="project-info">
@@ -469,37 +579,20 @@
         </div>
         <p class="copyright">&copy; 2023 Architectural Vision. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Simple animation for project cards on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const projectCards = document.querySelectorAll('.project-card');
+    
+    <!-- Project Detail Modals -->
+    <div id="horizon-tower" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+            <h2 class="modal-title">Horizon Tower</h2>
+            <p class="modal-location">New York, USA</p>
+            <p class="modal-description">A 50-story residential skyscraper featuring sustainable design elements and panoramic city views. The building incorporates green roofs and energy-efficient systems that reduce energy consumption by 40% compared to traditional buildings of similar size. The design maximizes natural light while minimizing solar heat gain through strategic window placement and advanced glazing technology.</p>
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            projectCards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-            
-            // Add click functionality to view project buttons
-            const viewButtons = document.querySelectorAll('.view-project');
-            viewButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const projectTitle = this.closest('.project-card').querySelector('.project-title').textContent;
-                    alert(`More details about "${projectTitle}" would be displayed here in a full implementation.`);
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            <div class="modal-details">
+                <div class="detail-item">
+                    <div class="detail-label">Project Type</div>
+                    <div class="detail-value">Residential High-Rise</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-
